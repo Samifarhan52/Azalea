@@ -251,6 +251,28 @@
       });
     }
 
+    // 13. Luxury Entry Reveal Preloader (2-3 seconds)
+    const entryReveal = document.getElementById("azalea-entry-reveal");
+    if (entryReveal) {
+      const dismissEntryReveal = function () {
+        if (!entryReveal.classList.contains("reveal-done")) {
+          entryReveal.classList.add("reveal-done");
+          setTimeout(function () {
+            entryReveal.style.display = "none";
+            if (entryReveal.parentNode) {
+              entryReveal.remove();
+            }
+          }, 700);
+        }
+      };
+
+      // Auto dismiss after 2.3 seconds
+      setTimeout(dismissEntryReveal, 2300);
+
+      // Allow instant dismissal on click
+      entryReveal.addEventListener("click", dismissEntryReveal);
+    }
+
   });
 
 })(jQuery);

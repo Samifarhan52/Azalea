@@ -2836,3 +2836,213 @@ img, svg, video, iframe {
     margin-top: 10px !important;
   }
 }
+
+/* ===================================================================
+   AZALEA LUXURY ENTRY REVEAL SPLASH SCREEN (2-3s)
+=================================================================== */
+.azalea-entry-reveal {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background: radial-gradient(circle at center, #0F2A4A 0%, #06152D 60%, #030A14 100%) !important;
+  z-index: 9999999 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+  pointer-events: all;
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.65s ease !important;
+  animation: entryOverlayFadeOut 2.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes entryOverlayFadeOut {
+  0% {
+    opacity: 1;
+    pointer-events: all;
+    visibility: visible;
+  }
+  80% {
+    opacity: 1;
+    pointer-events: all;
+    transform: scale(1);
+  }
+  96% {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(1.03);
+  }
+  100% {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    display: none;
+  }
+}
+
+.azalea-entry-reveal.reveal-done {
+  opacity: 0 !important;
+  transform: scale(1.04) !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+.entry-reveal-ambient-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(0, 194, 203, 0.28) 0%, rgba(0, 112, 186, 0.15) 45%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: entryGlowPulse 2.4s ease-in-out infinite alternate;
+}
+
+@keyframes entryGlowPulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0.85);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.15);
+    opacity: 1;
+  }
+}
+
+.entry-reveal-container {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.entry-logo-wrapper {
+  position: relative;
+  overflow: hidden;
+  padding: 16px 28px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 35px rgba(0, 194, 203, 0.2);
+  animation: entryLogoReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes entryLogoReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+    filter: blur(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.entry-logo-img {
+  height: 72px;
+  max-height: 72px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.entry-logo-shimmer {
+  position: absolute;
+  top: 0;
+  left: -140%;
+  width: 80%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+  transform: skewX(-25deg);
+  animation: entryShimmerSweep 1.8s ease-in-out 0.4s forwards;
+  pointer-events: none;
+}
+
+@keyframes entryShimmerSweep {
+  0% { left: -140%; }
+  100% { left: 180%; }
+}
+
+.entry-tagline {
+  margin-top: 22px;
+  opacity: 0;
+  animation: entryFadeUp 0.8s ease-out 0.5s forwards;
+}
+
+.entry-tagline span {
+  font-family: 'Outfit', sans-serif;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 3.5px;
+  color: #00D2FF;
+  text-transform: uppercase;
+  display: inline-block;
+  text-shadow: 0 0 12px rgba(0, 210, 255, 0.6);
+}
+
+.entry-progress-track {
+  width: 180px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+  margin-top: 22px;
+  overflow: hidden;
+  position: relative;
+  opacity: 0;
+  animation: entryFadeUp 0.8s ease-out 0.6s forwards;
+}
+
+.entry-progress-bar {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #0070BA, #00D2FF, #FFFFFF);
+  box-shadow: 0 0 10px #00D2FF;
+  border-radius: 4px;
+  animation: entryProgressFill 2.2s cubic-bezier(0.25, 1, 0.5, 1) 0.1s forwards;
+}
+
+@keyframes entryProgressFill {
+  0% { width: 0%; }
+  60% { width: 75%; }
+  100% { width: 100%; }
+}
+
+@keyframes entryFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 575px) {
+  .entry-logo-img {
+    height: 52px;
+    max-height: 52px;
+  }
+  .entry-logo-wrapper {
+    padding: 14px 20px;
+  }
+  .entry-tagline span {
+    font-size: 10px;
+    letter-spacing: 2.5px;
+  }
+  .entry-progress-track {
+    width: 140px;
+  }
+}
