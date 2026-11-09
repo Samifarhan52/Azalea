@@ -228,11 +228,26 @@
         rootMargin: "0px 0px -40px 0px"
       });
 
-      document.querySelectorAll(".az-reveal, .az-reveal-up, .az-reveal-left, .az-reveal-right, .az-reveal-scale, .feature-box, .service-card-item, .why-choose-item, .gallery-item, .about-modern-composition, .trust-endorsement-box, .faq-accordion .accordion-item").forEach(function (el) {
+      // Target all key interactive elements for scroll surprise
+      const targets = document.querySelectorAll(
+        ".az-reveal, .az-reveal-up, .az-reveal-left, .az-reveal-right, .az-reveal-scale, " +
+        ".feature-box, .service-card-item, .why-choose-item, .gallery-item, " +
+        ".about-modern-composition, .trust-endorsement-box, .faq-accordion .accordion-item, .cta-banner-section"
+      );
+
+      targets.forEach(function (el) {
         if (!el.classList.contains("az-reveal-up") && !el.classList.contains("az-reveal-left") && !el.classList.contains("az-reveal-right") && !el.classList.contains("az-reveal-scale")) {
           el.classList.add("az-reveal-up");
         }
         revealObserver.observe(el);
+      });
+
+      // Stagger cascade within rows for dynamic surprise pop-in
+      document.querySelectorAll(".row").forEach(function (row) {
+        const items = row.querySelectorAll(".feature-box, .service-card-item, .why-choose-item, .gallery-item");
+        items.forEach(function (item, idx) {
+          item.style.transitionDelay = (idx * 0.12) + "s";
+        });
       });
     }
 

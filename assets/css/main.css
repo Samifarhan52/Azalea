@@ -34,23 +34,29 @@ Version: 1.1.0
 }
 
 .theme-btn {
-  background-color: var(--theme);
+  background: linear-gradient(135deg, #0070BA 0%, #004F8C 100%);
   font-weight: 700;
-  color: var(--white);
-  transition: all 0.4s ease-in-out;
+  color: #FFFFFF;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   text-transform: capitalize;
   position: relative;
   overflow: hidden;
-  font-size: 16px;
-  padding: 24px 45px;
-  border-radius: 0;
-  z-index: 9;
-  display: inline-block;
+  font-size: 15px;
+  padding: 15px 32px;
+  border-radius: 8px;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   line-height: 1;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 14px rgba(0, 112, 186, 0.25);
+  cursor: pointer;
 }
 .theme-btn i {
-  margin-left: 8px;
-  transition: all 0.4s ease-in-out;
+  margin-left: 4px;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 @media (max-width: 575px) {
   .theme-btn i {
@@ -60,46 +66,46 @@ Version: 1.1.0
 }
 .theme-btn span {
   position: relative;
-  z-index: 9;
+  z-index: 5;
 }
 .theme-btn::after {
+  content: "";
   position: absolute;
   top: 0;
-  right: 0;
-  width: 50%;
-  height: 0;
-  content: "";
-  background-color: var(--header);
-  transition: all 0.4s ease-in-out;
+  left: -130%;
+  width: 80%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  transform: skewX(-25deg);
+  transition: left 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 2;
   border-radius: 0;
-  z-index: 1;
 }
 .theme-btn::before {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 50%;
-  height: 0;
-  content: "";
-  background-color: var(--header);
-  transition: all 0.4s ease-in-out;
-  border-radius: 0;
-  z-index: 1;
+  display: none !important;
+  content: none !important;
+  width: 0 !important;
+  height: 0 !important;
 }
 .theme-btn:hover {
-  color: var(--white);
+  background: linear-gradient(135deg, #00C2CB 0%, #0070BA 100%);
+  color: #FFFFFF;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 28px -4px rgba(0, 112, 186, 0.45), 0 0 20px 2px rgba(0, 194, 203, 0.35);
+  border-color: rgba(255, 255, 255, 0.4);
 }
 .theme-btn:hover::before {
-  height: 100%;
+  display: none !important;
+  width: 0 !important;
 }
 .theme-btn:hover::after {
-  height: 100%;
+  left: 170%;
 }
 .theme-btn:hover i {
-  transform: translate(5px);
+  transform: translateX(5px);
 }
 .theme-btn.hover-white::before, .theme-btn.hover-white::after {
-  background-color: var(--white);
+  display: none;
 }
 .theme-btn.hover-white:hover {
   color: var(--header);
@@ -109,14 +115,16 @@ Version: 1.1.0
   color: var(--header);
 }
 .theme-btn.bg-white {
-  color: var(--header);
+  background: #FFFFFF;
+  color: #0A192F;
 }
 .theme-btn.bg-white:hover {
-  color: var(--white);
+  background: linear-gradient(135deg, #00D2FF 0%, #0070BA 100%);
+  color: #FFFFFF;
 }
 .theme-btn.bg-white:hover i {
-  transform: translate(5px);
-  color: var(--white);
+  transform: translateX(5px);
+  color: #FFFFFF;
 }
 .theme-btn.theme-btn-2 {
   background-color: var(--theme2);
