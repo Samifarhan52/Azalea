@@ -1684,27 +1684,7 @@ a {
   color: var(--theme2);
 }
 
-/* Responsive adjustments */
-@media (max-width: 991px) {
-  .hero-content h1 {
-    font-size: 38px;
-  }
-  .about-floating-img {
-    position: static;
-    width: 100%;
-    margin-top: 20px;
-  }
-  .about-main-img {
-    width: 100%;
-    height: 350px;
-  }
-  .features-strip-section {
-    margin-top: 30px;
-  }
-  .header-contact-box {
-    display: none;
-  }
-}
+
 
 /* ===================================================================
    Click-to-Reveal Phone & Direct WhatsApp Components
@@ -1858,17 +1838,482 @@ a {
   box-shadow: 0 12px 30px rgba(37, 211, 102, 0.6);
 }
 
+/* ===================================================================
+   COMPREHENSIVE RESPONSIVE & MOBILE COMPATIBILITY SUITE
+   Fully optimized for all mobile screens (320px - 480px),
+   tablets (768px - 1024px), laptops (1200px), and desktops
+=================================================================== */
+
+/* 1. Global Viewport & Anti-Horizontal Overflow Guard */
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden !important;
+  position: relative;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+img, svg, video, iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+/* 2. Global Mobile Touch Targets & Inputs (iOS Safari Safe) */
 @media (max-width: 767px) {
-  .floating-whatsapp span {
-    display: none;
+  /* Prevent iOS Safari auto-zoom on input focus */
+  .form-control,
+  .form-select,
+  input,
+  textarea,
+  select {
+    font-size: 16px !important;
   }
+
+  /* Minimum touch target size for buttons */
+  .theme-btn,
+  .theme-btn-outline,
+  .btn-reveal-phone,
+  .header__hamburger {
+    min-height: 44px;
+  }
+}
+
+/* 3. Header & Navigation Mobile Optimization */
+@media (max-width: 1199px) {
+  .header-main {
+    padding: 10px 0 !important;
+  }
+  .header-logo img {
+    height: 52px !important;
+    max-height: 52px !important;
+  }
+}
+
+@media (max-width: 575px) {
+  .header-main {
+    padding: 8px 0 !important;
+  }
+  .header-logo img {
+    height: 44px !important;
+    max-height: 44px !important;
+  }
+  .header-right {
+    gap: 10px !important;
+  }
+}
+
+/* Polished Hamburger Toggle Button */
+.header__hamburger {
+  width: 44px !important;
+  height: 44px !important;
+  min-width: 44px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 8px !important;
+  background: rgba(0, 112, 186, 0.08) !important;
+  border: 1px solid rgba(0, 112, 186, 0.2) !important;
+  color: var(--theme) !important;
+  font-size: 19px !important;
+  cursor: pointer;
+  transition: all 0.25s ease !important;
+  text-decoration: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+.header__hamburger:hover,
+.header__hamburger:active,
+.header__hamburger:focus {
+  background: var(--theme) !important;
+  color: #FFFFFF !important;
+  border-color: var(--theme) !important;
+}
+
+/* Mobile Quick WhatsApp Button in Header (< 576px) */
+.mobile-header-wa {
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: #25D366;
+  color: #FFFFFF !important;
+  font-size: 20px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
+}
+
+.mobile-header-wa:hover,
+.mobile-header-wa:active {
+  background: #1EBE5D;
+  transform: scale(1.05);
+}
+
+/* 4. Mobile Offcanvas Slide-Out Drawer */
+.offcanvas__info {
+  width: min(340px, 86vw) !important;
+  max-width: 100% !important;
+  height: 100% !important;
+  position: fixed !important;
+  top: 0 !important;
+  right: -360px !important;
+  z-index: 99999 !important;
+  padding: 30px 22px !important;
+  background: #0A192F !important;
+  box-shadow: -10px 0 35px rgba(0, 0, 0, 0.5) !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.offcanvas__info.info-open {
+  right: 0 !important;
+}
+
+.offcanvas__overlay {
+  z-index: 99998 !important;
+}
+
+.offcanvas__close {
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 50% !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: #FFFFFF !important;
+  font-size: 20px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: absolute !important;
+  top: 18px !important;
+  right: 18px !important;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.offcanvas__close:hover {
+  background: rgba(255, 255, 255, 0.25) !important;
+  transform: rotate(90deg);
+}
+
+.mobile-nav-list li {
+  margin-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 10px;
+}
+
+.mobile-nav-list li a {
+  padding: 6px 0;
+  font-size: 15.5px;
+}
+
+.mobile-sub-menu {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  padding: 10px 14px;
+}
+
+/* 5. Hero Section Responsiveness */
+@media (max-width: 991px) {
+  .hero-1 .hero-content {
+    padding: 110px 0 90px !important;
+  }
+  .hero-content h1 {
+    font-size: 38px !important;
+    line-height: 1.2 !important;
+  }
+  .hero-content p {
+    font-size: 16px !important;
+  }
+  .header-contact-box {
+    display: none !important;
+  }
+  /* Hide decorative floating shapes that can spill over on tablet/mobile */
+  .shape-image,
+  .shape-image-2,
+  .border-shape,
+  .left-shape,
+  .right-shape,
+  .hero-1 .shape-image,
+  .hero-1 .shape-image-2,
+  .choose-us-section .shape-image,
+  .service-section .shape-image {
+    display: none !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-1 .hero-content {
+    padding: 95px 0 75px !important;
+    text-align: left !important;
+  }
+  .hero-content h1 {
+    font-size: 32px !important;
+    line-height: 1.22 !important;
+    margin-bottom: 16px !important;
+    letter-spacing: -0.3px !important;
+  }
+  .hero-badge {
+    font-size: 12px !important;
+    padding: 6px 14px !important;
+    margin-bottom: 18px !important;
+  }
+  .hero-content p {
+    font-size: 15px !important;
+    line-height: 1.6 !important;
+    margin-bottom: 24px !important;
+  }
+  .hero-button-group {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+  }
+  .hero-button-group .theme-btn,
+  .hero-button-group .theme-btn-outline {
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+    padding: 13px 20px !important;
+    font-size: 14.5px !important;
+  }
+  .hero-slider .swiper-pagination {
+    bottom: 18px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-1 .hero-content {
+    padding: 85px 0 65px !important;
+  }
+  .hero-content h1 {
+    font-size: 26px !important;
+    line-height: 1.25 !important;
+  }
+  .hero-badge {
+    font-size: 11px !important;
+    padding: 5px 12px !important;
+  }
+}
+
+/* 6. Section Titles & Headings on Mobile */
+@media (max-width: 767px) {
+  .section-title {
+    margin-bottom: 28px !important;
+  }
+  .section-title h2 {
+    font-size: 28px !important;
+    line-height: 1.25 !important;
+  }
+  .section-title p {
+    font-size: 14.5px !important;
+    line-height: 1.6 !important;
+  }
+  .sub-badge {
+    font-size: 12px !important;
+  }
+}
+
+@media (max-width: 575px) {
+  .section-title h2 {
+    font-size: 24px !important;
+  }
+}
+
+/* 7. Feature Cards & Why Choose Us on Mobile */
+@media (max-width: 767px) {
+  .features-strip-section {
+    margin-top: 25px !important;
+    margin-bottom: 40px !important;
+  }
+  .feature-box {
+    padding: 24px 20px !important;
+  }
+  .feature-box h4 {
+    font-size: 19px !important;
+    margin-bottom: 10px !important;
+  }
+  .feature-box p {
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+  }
+}
+
+/* 8. About Section Responsive Image Layout */
+@media (max-width: 991px) {
+  .about-main-img {
+    width: 100% !important;
+    height: 300px !important;
+    object-fit: cover !important;
+  }
+  .about-floating-img {
+    position: static !important;
+    width: 100% !important;
+    height: 220px !important;
+    margin-top: 15px !important;
+    border: none !important;
+  }
+  .about-experience-badge {
+    position: static !important;
+    width: 100% !important;
+    margin-top: 15px !important;
+    padding: 14px 20px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 15px !important;
+  }
+  .about-experience-badge h3 {
+    font-size: 26px !important;
+    margin: 0 !important;
+  }
+  .about-experience-badge span {
+    font-size: 12px !important;
+  }
+}
+
+/* 9. Breadcrumb Banners on Inner Pages */
+@media (max-width: 767px) {
+  .breadcrumb-banner {
+    padding: 65px 0 50px !important;
+  }
+  .breadcrumb-banner h1 {
+    font-size: 28px !important;
+    line-height: 1.25 !important;
+  }
+  .breadcrumb-nav {
+    font-size: 13.5px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .breadcrumb-banner {
+    padding: 55px 0 40px !important;
+  }
+  .breadcrumb-banner h1 {
+    font-size: 24px !important;
+  }
+}
+
+/* 10. Phone Reveal UX on Narrow Mobile Screens */
+@media (max-width: 575px) {
+  .phone-reveal-wrapper {
+    max-width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  .btn-reveal-phone {
+    font-size: 13.5px !important;
+    padding: 7px 14px !important;
+    width: 100% !important;
+    justify-content: center !important;
+  }
+  .revealed-phone-box {
+    width: 100% !important;
+    justify-content: center !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+  }
+  .revealed-phone-box .phone-call-link {
+    font-size: 15px !important;
+  }
+}
+
+/* 11. Modal Dialog Mobile Sizing */
+@media (max-width: 767px) {
+  .modal-dialog {
+    margin: 12px !important;
+    max-width: calc(100% - 24px) !important;
+  }
+  .modal-header {
+    padding: 18px 20px !important;
+  }
+  .modal-body {
+    padding: 20px 16px !important;
+  }
+}
+
+/* 12. Floating WhatsApp & Scroll-Up Controls on Mobile */
+@media (max-width: 767px) {
   .floating-whatsapp {
-    padding: 14px;
-    border-radius: 50%;
-    bottom: 20px;
-    left: 20px;
+    bottom: 20px !important;
+    left: 18px !important;
+    width: 52px !important;
+    height: 52px !important;
+    padding: 0 !important;
+    border-radius: 50% !important;
+    justify-content: center !important;
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.5) !important;
+    z-index: 9999 !important;
   }
   .floating-whatsapp i {
-    margin: 0;
+    font-size: 24px !important;
+    margin: 0 !important;
+  }
+  .floating-whatsapp span {
+    display: none !important;
+  }
+
+  .scroll-up {
+    bottom: 20px !important;
+    right: 18px !important;
+    width: 44px !important;
+    height: 44px !important;
+    line-height: 44px !important;
+    z-index: 9998 !important;
+  }
+  .scroll-up::after {
+    line-height: 44px !important;
+  }
+}
+
+/* 13. Gallery & Touchscreen Optimization */
+@media (max-width: 767px) {
+  .gallery-item {
+    height: 220px !important;
+    margin-bottom: 20px !important;
+  }
+}
+
+@media (hover: none) {
+  .gallery-overlay {
+    opacity: 1 !important;
+    background: linear-gradient(180deg, rgba(6, 16, 30, 0) 30%, rgba(6, 16, 30, 0.88) 100%) !important;
+  }
+  .gallery-overlay h5 {
+    font-size: 16px !important;
+  }
+}
+
+/* 14. Footer Mobile Alignment */
+@media (max-width: 767px) {
+  .footer-section {
+    padding-top: 50px !important;
+  }
+  .footer-widget {
+    margin-bottom: 35px !important;
+  }
+  .footer-widget h5 {
+    font-size: 17px !important;
+    margin-bottom: 18px !important;
+  }
+  .footer-bottom {
+    margin-top: 40px !important;
+    padding: 20px 0 !important;
+    text-align: center !important;
+  }
+  .footer-bottom-menu {
+    justify-content: center !important;
+    margin-top: 10px !important;
   }
 }

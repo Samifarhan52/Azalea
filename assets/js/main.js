@@ -14,7 +14,7 @@
       $(".offcanvas__overlay").addClass("overlay-open");
     });
 
-    $(".offcanvas__close, .offcanvas__overlay").on("click", function () {
+    $(".offcanvas__close, .offcanvas__overlay, .mobile-nav-list a:not(.has-dropdown > a)").on("click", function () {
       $(".offcanvas__info").removeClass("info-open");
       $(".offcanvas__overlay").removeClass("overlay-open");
     });
