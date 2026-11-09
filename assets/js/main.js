@@ -163,26 +163,285 @@
       }
     });
 
-    // 9. Booking Form Submission & Feedback
+    // ===================================================================
+    // 9. Comprehensive International Phone Input with Search & Country Selection
+    // ===================================================================
+    const AZALEA_COUNTRIES = [
+      { code: "QA", name: "Qatar", dial: "+974", flag: "🇶🇦" },
+      { code: "AE", name: "United Arab Emirates", dial: "+971", flag: "🇦🇪" },
+      { code: "SA", name: "Saudi Arabia", dial: "+966", flag: "🇸🇦" },
+      { code: "KW", name: "Kuwait", dial: "+965", flag: "🇰🇼" },
+      { code: "BH", name: "Bahrain", dial: "+973", flag: "🇧🇭" },
+      { code: "OM", name: "Oman", dial: "+968", flag: "🇴🇲" },
+      { code: "GB", name: "United Kingdom", dial: "+44", flag: "🇬🇧" },
+      { code: "US", name: "United States", dial: "+1", flag: "🇺🇸" },
+      { code: "CA", name: "Canada", dial: "+1", flag: "🇨🇦" },
+      { code: "IN", name: "India", dial: "+91", flag: "🇮🇳" },
+      { code: "PK", name: "Pakistan", dial: "+92", flag: "🇵🇰" },
+      { code: "EG", name: "Egypt", dial: "+20", flag: "🇪🇬" },
+      { code: "JO", name: "Jordan", dial: "+962", flag: "🇯🇴" },
+      { code: "LB", name: "Lebanon", dial: "+961", flag: "🇱🇧" },
+      { code: "TR", name: "Turkey", dial: "+90", flag: "🇹🇷" },
+      { code: "DE", name: "Germany", dial: "+49", flag: "🇩🇪" },
+      { code: "FR", name: "France", dial: "+33", flag: "🇫🇷" },
+      { code: "IT", name: "Italy", dial: "+39", flag: "🇮🇹" },
+      { code: "ES", name: "Spain", dial: "+34", flag: "🇪🇸" },
+      { code: "NL", name: "Netherlands", dial: "+31", flag: "🇳🇱" },
+      { code: "CH", name: "Switzerland", dial: "+41", flag: "🇨🇭" },
+      { code: "AU", name: "Australia", dial: "+61", flag: "🇦🇺" },
+      { code: "NZ", name: "New Zealand", dial: "+64", flag: "🇳🇿" },
+      { code: "SG", name: "Singapore", dial: "+65", flag: "🇸🇬" },
+      { code: "MY", name: "Malaysia", dial: "+60", flag: "🇲🇾" },
+      { code: "ID", name: "Indonesia", dial: "+62", flag: "🇮🇩" },
+      { code: "PH", name: "Philippines", dial: "+63", flag: "🇵🇭" },
+      { code: "BD", name: "Bangladesh", dial: "+880", flag: "🇧🇩" },
+      { code: "LK", name: "Sri Lanka", dial: "+94", flag: "🇱🇰" },
+      { code: "NP", name: "Nepal", dial: "+977", flag: "🇳🇵" },
+      { code: "CN", name: "China", dial: "+86", flag: "🇨🇳" },
+      { code: "JP", name: "Japan", dial: "+81", flag: "🇯🇵" },
+      { code: "KR", name: "South Korea", dial: "+82", flag: "🇰🇷" },
+      { code: "ZA", name: "South Africa", dial: "+27", flag: "🇿🇦" },
+      { code: "NG", name: "Nigeria", dial: "+234", flag: "🇳🇬" },
+      { code: "KE", name: "Kenya", dial: "+254", flag: "🇰🇪" },
+      { code: "MA", name: "Morocco", dial: "+212", flag: "🇲🇦" },
+      { code: "TN", name: "Tunisia", dial: "+216", flag: "🇹🇳" },
+      { code: "DZ", name: "Algeria", dial: "+213", flag: "🇩🇿" },
+      { code: "RU", name: "Russia", dial: "+7", flag: "🇷🇺" },
+      { code: "BR", name: "Brazil", dial: "+55", flag: "🇧🇷" },
+      { code: "MX", name: "Mexico", dial: "+52", flag: "🇲🇽" },
+      { code: "AR", name: "Argentina", dial: "+54", flag: "🇦🇷" },
+      { code: "CO", name: "Colombia", dial: "+57", flag: "🇨🇴" },
+      { code: "IE", name: "Ireland", dial: "+353", flag: "🇮🇪" },
+      { code: "SE", name: "Sweden", dial: "+46", flag: "🇸🇪" },
+      { code: "NO", name: "Norway", dial: "+47", flag: "🇳🇴" },
+      { code: "DK", name: "Denmark", dial: "+45", flag: "🇩🇰" },
+      { code: "PL", name: "Poland", dial: "+48", flag: "🇵🇱" },
+      { code: "PT", name: "Portugal", dial: "+351", flag: "🇵🇹" },
+      { code: "GR", name: "Greece", dial: "+30", flag: "🇬🇷" },
+      { code: "AT", name: "Austria", dial: "+43", flag: "🇦🇹" },
+      { code: "BE", name: "Belgium", dial: "+32", flag: "🇧🇪" },
+      { code: "IQ", name: "Iraq", dial: "+964", flag: "🇮🇶" },
+      { code: "YE", name: "Yemen", dial: "+967", flag: "🇾🇪" },
+      { code: "SY", name: "Syria", dial: "+963", flag: "🇸🇾" },
+      { code: "PS", name: "Palestine", dial: "+970", flag: "🇵🇸" },
+      { code: "SD", name: "Sudan", dial: "+249", flag: "🇸🇩" },
+      { code: "ET", name: "Ethiopia", dial: "+251", flag: "🇪🇹" },
+      { code: "GH", name: "Ghana", dial: "+233", flag: "🇬🇭" },
+      { code: "TZ", name: "Tanzania", dial: "+255", flag: "🇹🇿" },
+      { code: "UG", name: "Uganda", dial: "+256", flag: "🇺🇬" },
+      { code: "UA", name: "Ukraine", dial: "+380", flag: "🇺🇦" },
+      { code: "RO", name: "Romania", dial: "+40", flag: "🇷🇴" },
+      { code: "CZ", name: "Czech Republic", dial: "+420", flag: "🇨🇿" },
+      { code: "HU", name: "Hungary", dial: "+36", flag: "🇭🇺" },
+      { code: "HK", name: "Hong Kong", dial: "+852", flag: "🇭🇰" },
+      { code: "TW", name: "Taiwan", dial: "+886", flag: "🇹🇼" },
+      { code: "TH", name: "Thailand", dial: "+66", flag: "🇹🇭" },
+      { code: "VN", name: "Vietnam", dial: "+84", flag: "🇻🇳" },
+      { code: "AF", name: "Afghanistan", dial: "+93", flag: "🇦🇫" },
+      { code: "IR", name: "Iran", dial: "+98", flag: "🇮🇷" },
+      { code: "KZ", name: "Kazakhstan", dial: "+7", flag: "🇰🇿" },
+      { code: "UZ", name: "Uzbekistan", dial: "+998", flag: "🇺🇿" },
+      { code: "AZ", name: "Azerbaijan", dial: "+994", flag: "🇦🇿" },
+      { code: "GE", name: "Georgia", dial: "+995", flag: "🇬🇪" },
+      { code: "CY", name: "Cyprus", dial: "+357", flag: "🇨🇾" },
+      { code: "MT", name: "Malta", dial: "+356", flag: "🇲🇹" },
+      { code: "LU", name: "Luxembourg", dial: "+352", flag: "🇱🇺" },
+      { code: "IS", name: "Iceland", dial: "+354", flag: "🇮🇸" },
+      { code: "FI", name: "Finland", dial: "+358", flag: "🇫🇮" },
+      { code: "CL", name: "Chile", dial: "+56", flag: "🇨🇱" },
+      { code: "PE", name: "Peru", dial: "+51", flag: "🇵🇪" },
+      { code: "VE", name: "Venezuela", dial: "+58", flag: "🇻🇪" },
+      { code: "EC", name: "Ecuador", dial: "+593", flag: "🇪🇨" },
+      { code: "UY", name: "Uruguay", dial: "+598", flag: "🇺🇾" },
+      { code: "PA", name: "Panama", dial: "+507", flag: "🇵🇦" },
+      { code: "CR", name: "Costa Rica", dial: "+506", flag: "🇨🇷" },
+      { code: "MV", name: "Maldives", dial: "+960", flag: "🇲🇻" }
+    ];
+
+    function initIntlPhonePickers() {
+      $(".intl-phone-wrapper").each(function () {
+        const wrapper = $(this);
+        const list = wrapper.find(".country-list");
+        const searchInput = wrapper.find(".country-search-input");
+        const noResults = wrapper.find(".country-no-results");
+        const pickerBtn = wrapper.find(".country-picker-btn");
+        const dropdown = wrapper.find(".country-select-dropdown");
+        const hiddenInput = wrapper.find(".country-dial-code-input");
+        const phoneInput = wrapper.find(".phone-input-field");
+
+        // Populate country list if empty
+        if (list.children().length === 0) {
+          AZALEA_COUNTRIES.forEach(function (c) {
+            const isSelected = (c.dial === hiddenInput.val() || (hiddenInput.val() === "+974" && c.code === "QA"));
+            const li = $(`
+              <li class="country-item ${isSelected ? 'is-selected' : ''}" data-dial="${c.dial}" data-flag="${c.flag}" data-name="${c.name}">
+                <span class="item-flag">${c.flag}</span>
+                <span class="item-name">${c.name}</span>
+                <span class="item-code">${c.dial}</span>
+              </li>
+            `);
+            list.append(li);
+          });
+        }
+
+        // Toggle dropdown on button click
+        pickerBtn.off("click").on("click", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          const isOpen = dropdown.hasClass("is-open");
+          $(".country-select-dropdown").removeClass("is-open");
+          if (!isOpen) {
+            dropdown.addClass("is-open");
+            searchInput.val("").trigger("input");
+            setTimeout(function () {
+              searchInput.focus();
+            }, 100);
+          }
+        });
+
+        // Search filter
+        searchInput.off("input").on("input", function () {
+          const query = $(this).val().toLowerCase().trim();
+          let matched = 0;
+          list.find(".country-item").each(function () {
+            const name = $(this).attr("data-name").toLowerCase();
+            const dial = $(this).attr("data-dial").toLowerCase();
+            if (name.includes(query) || dial.includes(query)) {
+              $(this).show();
+              matched++;
+            } else {
+              $(this).hide();
+            }
+          });
+          if (matched === 0) {
+            noResults.show();
+          } else {
+            noResults.hide();
+          }
+        });
+
+        // Select country
+        list.off("click", ".country-item").on("click", ".country-item", function (e) {
+          e.stopPropagation();
+          const item = $(this);
+          const dial = item.attr("data-dial");
+          const flag = item.attr("data-flag");
+
+          pickerBtn.find(".selected-flag").text(flag);
+          pickerBtn.find(".selected-dial-code").text(dial);
+          hiddenInput.val(dial);
+
+          list.find(".country-item").removeClass("is-selected");
+          item.addClass("is-selected");
+
+          dropdown.removeClass("is-open");
+          phoneInput.focus();
+        });
+
+        // Typing detection: if user types + or custom dial code directly in the phone field
+        phoneInput.off("input.codeDetect").on("input.codeDetect", function () {
+          const val = $(this).val().trim();
+          if (val.startsWith("+")) {
+            const matched = AZALEA_COUNTRIES.filter(function (c) {
+              return val.startsWith(c.dial);
+            }).sort(function (a, b) {
+              return b.dial.length - a.dial.length;
+            })[0];
+
+            if (matched) {
+              pickerBtn.find(".selected-flag").text(matched.flag);
+              pickerBtn.find(".selected-dial-code").text(matched.dial);
+              hiddenInput.val(matched.dial);
+              list.find(".country-item").removeClass("is-selected");
+              list.find(`.country-item[data-dial='${matched.dial}']`).addClass("is-selected");
+            }
+          }
+        });
+      });
+
+      // Close dropdown when clicking outside
+      $(document).off("click.countryDropdown").on("click.countryDropdown", function (e) {
+        if (!$(e.target).closest(".country-select-dropdown").length) {
+          $(".country-select-dropdown").removeClass("is-open");
+        }
+      });
+    }
+
+    initIntlPhonePickers();
+
+    // ===================================================================
+    // 10. Form Submission & Direct Automatic WhatsApp Delivery
+    // ===================================================================
     $("#bookingForm, #consultationForm, #pageContactForm").on("submit", function (e) {
       e.preventDefault();
       const form = $(this);
       const submitBtn = form.find("button[type='submit']");
-      const origText = submitBtn.html();
 
-      submitBtn.prop("disabled", true).html('<i class="fas fa-spinner fa-spin me-2"></i>Processing...');
+      // Extract values cleanly
+      const name = form.find("input[placeholder*='Name']").first().val() || "";
+      const company = form.find("input[placeholder*='Company'], input[placeholder*='Startup']").val() || "";
+      const email = form.find("input[type='email']").val() || "";
+      let dialCode = form.find(".country-dial-code-input").val() || "+974";
+      let phone = form.find(".phone-input-field, input[type='tel']").val() || "";
+      
+      // Clean phone if it already contains the dial code
+      if (phone.startsWith(dialCode)) {
+        phone = phone.substring(dialCode.length).trim();
+      } else if (phone.startsWith("+")) {
+        dialCode = "";
+      }
+      const fullPhone = (dialCode ? dialCode + " " : "") + phone;
+
+      const spaceType = form.find("select option:selected").text() || "Executive Office / Workspace";
+      const tourDate = form.find("input[type='date']").val() || "";
+      const notes = form.find("textarea").val() || "";
+
+      // Construct professional WhatsApp message
+      const waMessage = 
+        "🌟 *NEW WORKSPACE INQUIRY - NEW AZALEA BUSINESS CENTER* 🌟\n" +
+        "━━━━━━━━━━━━━━━━━━━━━━━━━━\n" +
+        "👤 *Full Name:* " + (name.trim() || "Not provided") + "\n" +
+        "🏢 *Company:* " + (company.trim() || "N/A") + "\n" +
+        "📧 *Email:* " + (email.trim() || "Not provided") + "\n" +
+        "📱 *Phone:* " + fullPhone.trim() + "\n" +
+        "📍 *Workspace:* " + (spaceType && !spaceType.includes("Select") ? spaceType : "Executive Office") + "\n" +
+        "📅 *Preferred Date:* " + (tourDate || "Flexible / Move-in Ready") + "\n" +
+        "📝 *Requirements:* " + (notes.trim() || "Standard workspace consultation") + "\n" +
+        "━━━━━━━━━━━━━━━━━━━━━━━━━━\n" +
+        "📍 *Location:* Buzwair Building, Doha, Qatar\n" +
+        "🌐 *Source:* azaleagroupqa.com";
+
+      const waUrl = "https://wa.me/97451019991?text=" + encodeURIComponent(waMessage);
+
+      // Visual feedback
+      submitBtn.prop("disabled", true).html('<i class="fas fa-spinner fa-spin me-2"></i>Connecting to WhatsApp...');
 
       setTimeout(function () {
-        submitBtn.prop("disabled", false).html(origText);
-        // Show success alert
+        // Show stylish WhatsApp delivery confirmation card
         form.html(`
-          <div class="alert alert-success p-4 text-center my-3 rounded-3 shadow-sm">
-            <div class="mb-3"><i class="fas fa-check-circle text-success fa-3x"></i></div>
-            <h4 class="fw-bold mb-2">Thank You for Your Request!</h4>
-            <p class="mb-0 text-muted">Our dedicated workspace advisor at New Azalea Business Center will contact you within 2 hours to confirm your private tour & workspace consultation in Doha.</p>
+          <div class="alert alert-success p-4 text-center my-3 rounded-3 shadow-sm border-0" style="background: #F0FDF4; border: 1px solid #BBF7D0 !important;">
+            <div class="mb-3"><i class="fab fa-whatsapp text-success" style="font-size: 50px;"></i></div>
+            <h4 class="fw-bold mb-2 text-dark">Redirecting to WhatsApp...</h4>
+            <p class="mb-3 text-secondary" style="font-size: 14.5px;">Your workspace inquiry details have been formatted and delivered directly to New Azalea Business Center's official WhatsApp line.</p>
+            <div class="mb-3">
+              <a href="${waUrl}" target="_blank" class="theme-btn theme-btn-luxury d-inline-flex align-items-center justify-content-center gap-2" style="background: #25D366 !important; color: #FFFFFF !important; border: none !important; font-size: 16px !important; padding: 16px 32px !important; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4) !important;">
+                <i class="fab fa-whatsapp fs-5"></i> Open in WhatsApp Now
+              </a>
+            </div>
+            <div>
+              <small class="text-muted"><i class="fas fa-shield-alt text-success me-1"></i> Connected to Official New Azalea Support (+974 51019991)</small>
+            </div>
           </div>
         `);
-      }, 1200);
+
+        // Automatically trigger WhatsApp redirect
+        const opened = window.open(waUrl, "_blank");
+        if (!opened || opened.closed || typeof opened.closed === "undefined") {
+          setTimeout(function () {
+            window.location.href = waUrl;
+          }, 800);
+        }
+      }, 900);
     });
 
     // 10. Smooth scroll for anchor links

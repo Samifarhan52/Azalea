@@ -13,8 +13,8 @@
   <link rel="stylesheet" href="assets/css/animate.css">
   <link rel="stylesheet" href="assets/css/magnific-popup.css">
   <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
-  <link rel="stylesheet" href="assets/css/main.css?v=7.0">
-  <link rel="stylesheet" href="assets/css/custom.css?v=7.0">
+  <link rel="stylesheet" href="assets/css/main.css?v=8.0">
+  <link rel="stylesheet" href="assets/css/custom.css?v=8.0">
 </head>
 <body>
 
@@ -495,7 +495,25 @@
               </div>
               <div class="col-md-6">
                 <label class="form-label">Phone Number *</label>
-                <input type="tel" class="form-control" placeholder="+974 ..." required>
+                <div class="intl-phone-wrapper">
+                  <div class="country-select-dropdown">
+                    <button type="button" class="country-picker-btn" aria-expanded="false" title="Select Country Code">
+                      <span class="selected-flag">🇶🇦</span>
+                      <span class="selected-dial-code">+974</span>
+                      <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="country-dropdown-menu">
+                      <div class="country-search-box">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" class="country-search-input" placeholder="Search country or code...">
+                      </div>
+                      <ul class="country-list"></ul>
+                      <div class="country-no-results">No country found</div>
+                    </div>
+                  </div>
+                  <input type="hidden" name="country_dial_code" class="country-dial-code-input" value="+974">
+                  <input type="tel" name="phone_number" class="form-control phone-input-field" placeholder="Mobile number" required>
+                </div>
               </div>
               <div class="col-md-6">
                 <label class="form-label">Office Size Desired *</label>
@@ -538,7 +556,7 @@
   <script src="assets/js/wow.min.js"></script>
   <script src="assets/js/swiper-bundle.min.js"></script>
   <script src="assets/js/jquery.magnific-popup.min.js"></script>
-  <script src="assets/js/main.js?v=7.0"></script>
+  <script src="assets/js/main.js?v=8.0"></script>
 
   <!-- Floating WhatsApp Action Widget -->
   <a href="https://wa.me/97451019991" target="_blank" class="floating-whatsapp" title="Chat directly on WhatsApp">
