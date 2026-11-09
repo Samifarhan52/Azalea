@@ -206,126 +206,134 @@ a {
 }
 
 /* 2. Center: Perfectly Centered Navigation Menu */
-.header-main .main-menu {
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  flex: 1 1 auto !important;
-  margin: 0 auto !important;
-  padding: 0 20px !important;
+@media (max-width: 1199px) {
+  .header-main .main-menu {
+    display: none !important;
+  }
 }
 
-.header-main .main-menu ul {
-  display: flex !important;
-  flex-direction: row !important;
-  flex-wrap: nowrap !important;
-  align-items: center !important;
-  justify-content: center !important;
-  list-style: none !important;
-  margin: 0 auto !important;
-  padding: 0 !important;
-  gap: 28px !important;
-}
+@media (min-width: 1200px) {
+  .header-main .main-menu {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    flex: 1 1 auto !important;
+    margin: 0 auto !important;
+    padding: 0 20px !important;
+  }
 
-.header-main .main-menu ul li {
-  position: relative !important;
-  margin: 0 !important;
-  margin-inline-end: 0 !important;
-  display: inline-block !important;
-  white-space: nowrap !important;
-}
+  .header-main .main-menu ul {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: center !important;
+    list-style: none !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    gap: 28px !important;
+  }
 
-.header-main .main-menu ul li a {
-  font-family: 'Outfit', 'Inter', sans-serif !important;
-  font-size: 15px !important;
-  font-weight: 600 !important;
-  color: #1A202C !important;
-  padding: 24px 0 !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 6px !important;
-  position: relative !important;
-  white-space: nowrap !important;
-  text-decoration: none !important;
-  line-height: 1.2 !important;
-  letter-spacing: 0.2px !important;
-  transition: color 0.25s ease !important;
-}
+  .header-main .main-menu ul li {
+    position: relative !important;
+    margin: 0 !important;
+    margin-inline-end: 0 !important;
+    display: inline-block !important;
+    white-space: nowrap !important;
+  }
 
-.header-1.sticky .main-menu ul li a {
-  padding: 16px 0 !important;
-}
+  .header-main .main-menu ul li a {
+    font-family: 'Outfit', 'Inter', sans-serif !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    color: #1A202C !important;
+    padding: 24px 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    position: relative !important;
+    white-space: nowrap !important;
+    text-decoration: none !important;
+    line-height: 1.2 !important;
+    letter-spacing: 0.2px !important;
+    transition: color 0.25s ease !important;
+  }
 
-.header-main .main-menu ul li a:hover,
-.header-main .main-menu ul li.active > a {
-  color: var(--theme) !important;
-}
+  .header-1.sticky .main-menu ul li a {
+    padding: 16px 0 !important;
+  }
 
-.header-main .main-menu ul li a::after {
-  content: '';
-  position: absolute;
-  bottom: 12px;
-  left: 0;
-  width: 0;
-  height: 3px;
-  border-radius: 2px;
-  background: var(--primary-gradient);
-  transition: width 0.3s ease;
-}
+  .header-main .main-menu ul li a:hover,
+  .header-main .main-menu ul li.active > a {
+    color: var(--theme) !important;
+  }
 
-.header-main .main-menu ul li:hover > a::after,
-.header-main .main-menu ul li.active > a::after {
-  width: 100%;
-}
+  .header-main .main-menu ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 12px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--primary-gradient);
+    transition: width 0.3s ease;
+  }
 
-.header-main .main-menu ul li .sub-menu {
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%) translateY(12px);
-  width: 250px;
-  background: #FFFFFF;
-  box-shadow: var(--box-shadow-lg);
-  border-radius: 8px;
-  padding: 12px 0;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 0 !important;
-  border-top: 3px solid var(--theme);
-  z-index: 1000;
-}
+  .header-main .main-menu ul li:hover > a::after,
+  .header-main .main-menu ul li.active > a::after {
+    width: 100%;
+  }
 
-.header-main .main-menu ul li:hover .sub-menu {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(-50%) translateY(0);
-}
+  .header-main .main-menu ul li .sub-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(12px);
+    width: 250px;
+    background: #FFFFFF;
+    box-shadow: var(--box-shadow-lg);
+    border-radius: 8px;
+    padding: 12px 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+    border-top: 3px solid var(--theme);
+    z-index: 1000;
+  }
 
-.header-main .main-menu ul li .sub-menu li {
-  width: 100%;
-}
+  .header-main .main-menu ul li:hover .sub-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
 
-.header-main .main-menu ul li .sub-menu li a {
-  padding: 10px 20px !important;
-  display: flex !important;
-  color: #2D3748 !important;
-  font-size: 14px !important;
-  font-weight: 500 !important;
-  width: 100% !important;
-  transition: all 0.2s ease !important;
-}
+  .header-main .main-menu ul li .sub-menu li {
+    width: 100%;
+  }
 
-.header-main .main-menu ul li .sub-menu li a::after {
-  display: none !important;
-}
+  .header-main .main-menu ul li .sub-menu li a {
+    padding: 10px 20px !important;
+    display: flex !important;
+    color: #2D3748 !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    width: 100% !important;
+    transition: all 0.2s ease !important;
+  }
 
-.header-main .main-menu ul li .sub-menu li a:hover {
-  background: #F0F7FD !important;
-  color: var(--theme) !important;
-  padding-left: 24px !important;
+  .header-main .main-menu ul li .sub-menu li a::after {
+    display: none !important;
+  }
+
+  .header-main .main-menu ul li .sub-menu li a:hover {
+    background: #F0F7FD !important;
+    color: var(--theme) !important;
+    padding-left: 24px !important;
+  }
 }
 
 /* 3. Right: Contact Info & CTA Button */
@@ -1908,23 +1916,31 @@ img, svg, video, iframe {
 }
 
 /* Polished Hamburger Toggle Button */
-.header__hamburger {
-  width: 44px !important;
-  height: 44px !important;
-  min-width: 44px !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  border-radius: 8px !important;
-  background: rgba(0, 112, 186, 0.08) !important;
-  border: 1px solid rgba(0, 112, 186, 0.2) !important;
-  color: var(--theme) !important;
-  font-size: 19px !important;
-  cursor: pointer;
-  transition: all 0.25s ease !important;
-  text-decoration: none !important;
-  box-shadow: none !important;
-  padding: 0 !important;
+@media (min-width: 1200px) {
+  .header__hamburger {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1199px) {
+  .header__hamburger {
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 8px !important;
+    background: rgba(0, 112, 186, 0.08) !important;
+    border: 1px solid rgba(0, 112, 186, 0.2) !important;
+    color: var(--theme) !important;
+    font-size: 19px !important;
+    cursor: pointer;
+    transition: all 0.25s ease !important;
+    text-decoration: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
 }
 
 .header__hamburger:hover,
@@ -2053,8 +2069,15 @@ img, svg, video, iframe {
 }
 
 @media (max-width: 767px) {
+  .hero-slider .swiper-slide {
+    min-height: 560px !important;
+    padding: 60px 0 50px !important;
+  }
+  .hero-image::before {
+    background: linear-gradient(180deg, rgba(6, 16, 30, 0.92) 0%, rgba(6, 16, 30, 0.85) 100%) !important;
+  }
   .hero-1 .hero-content {
-    padding: 95px 0 75px !important;
+    padding: 75px 0 60px !important;
     text-align: left !important;
   }
   .hero-content h1 {
